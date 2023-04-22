@@ -1,0 +1,9 @@
+main {
+    background-color: #0253f5;
+    color: whitesmoke!important;
+}
+
+.card {
+    background: linear-gradient(to bottom, #0bfcfc, #0253f5)!important;
+}
+
