@@ -1,0 +1,26 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.row{
+    Display: flex;
+    Justify-content: center;
+    Align-items: center;
+    Height: 100vh;
+    background-image: linear-gradient(0deg, rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(https://images3.alphacoders.com/358/35877.png);
+    background-position: center center;
+    background-repeat: no-repeat ;
+    background-size: cover;
+}
+p {
+    color: whitesmoke;
+    font-size: 16px;
+}
+.display-none {
+    Display: none;
+}
+.error {
+    Color: red;
+    Display: none;
+}

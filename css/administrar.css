@@ -1,0 +1,39 @@
+#tabla {
+  background-color: white !important;
+  width: 100%;
+  padding: 5px;
+
+}
+#tablaUsers {
+  background-color: white !important;
+  width: 70%;
+  padding: 5px;
+}
+
+
+.tabla-parentProducts {
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:100%;
+}
+.tabla-parentUsers {
+  margin-left: 5px;
+  margin-right: 5px;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:40%;
+}
+  
+.formulario {
+  background-color: white;
+  border-radius: 1%;
+  margin-top: 5px;
+  padding: 50px;
+  width: 50%;
+}
