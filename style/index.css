@@ -1,4 +1,4 @@
-main {
+.nosotros {
     background-color: #0253f5;
     color: whitesmoke!important;
 }
@@ -6,4 +6,45 @@ main {
 .card {
     background: linear-gradient(to bottom, #0bfcfc, #0253f5)!important;
 }
+
+.body404 {
+    background: linear-gradient(90deg, rgba(9,9,121,1) 13%, rgba(0,212,255,1) 100%);
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    color: #faf9f9;
+  }
+  
+  .container404 {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding-top: 50px;
+  }
+  
+  .numero404 {
+    font-size: 120px;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #0bfcfc !important;
+  }
+  
+  .mensaje404 {
+    font-size: 20px;
+    margin-bottom: 30px;
+  }
+  
+  .a404 {
+    display: inline-block;
+    background-color: #0345c9;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .a404:hover {
+    background-color: #e83c3c;
+  }
 
