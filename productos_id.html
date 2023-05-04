@@ -16,7 +16,7 @@
     <title>Rolling Code 33i</title>
   </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container-fluid">
         <a class="navbar-brand" href="/index.html">Mi Tienda</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,7 +28,7 @@
               <a class="nav-link" href="/index.html">Inicio</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Productos</a>
+              <a class="nav-link" href="/productos.html">Productos</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/favoritos.html">Favoritos</a>
@@ -37,87 +37,26 @@
               <a class="nav-link" href="/administracion.html">administracion</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Carrito</a>
+              <a class="nav-link" href="/carrito.html">Carrito</a>
             </li>
             <li class="nav-item">
               <form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="busqueda">
               </form>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Iniciar sesión</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Registrarse</a>
+            <li>
+              <button id="logout" class="btn btn-danger">Logout</button>
             </li>
           </ul>
         </div>
       </div>
     </nav>
-    <!-- Modal-->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5" id="exampleModalLabel">
-              Iniciar Sesión
-            </h1>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="mb-3">
-                <label for="mail" class="form-label">Email address</label>
-                <input
-                  type="email"
-                  class="form-control"
-                  id="mail"
-                  aria-describedby="emailHelp"
-                />
-                <div id="emailHelp" class="form-text">
-                  Nunca compartiremos tu contraseña con nadie
-                </div>
-              </div>
-              <div class="mb-3">
-                <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" />
-              </div>
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-              id="close"
-            >
-              Close
-            </button>
-            <button type="button" class="btn btn-dark" id="login">Login</button>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- -->
 
-
-    <div class="container-fluid d-flex flex-row">
+    <div class="container-fluid d-flex flex-row my-3">
       <div id="detalle-producto" class="shadow"></div>
     </div>
 
 
-    <!-- -->
     <footer class="bg-dark text-white">
       <div class="container py-5">
         <div class="row">
@@ -134,9 +73,9 @@
             <h5>Enlaces</h5>
             <ul class="list-unstyled">
               <li><a href="/index.html" class="nav-linkF" >Home</a></li>
-              <li><a href="#" class="nav-linkF" >Productos</a></li>
+              <li><a href="/productos.html" class="nav-linkF" >Productos</a></li>
               <li><a href="/favoritos.html" class="nav-linkF" >Favoritos</a></li>
-              <li><a href="#" class="nav-linkF" >Carrito</a></li>
+              <li><a href="/carrito.html" class="nav-linkF" >Carrito</a></li>
             </ul>
           </div>
           <div class="col-md-4 mb-3 mb-md-0">

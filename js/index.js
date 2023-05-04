@@ -1,23 +1,67 @@
 //Carga Inicial de Datos - Semilla
+const productos_base = [
+  {
+    id: 1,
+    descripción: `Pantalla de gran impacto.
+      Con un diseño de 14.1 pulgadas con la notebook Enova puedes disfrutar de los contenidos con resolución de 1366x768, sin perderte ningún detalle y visualizarlo con colores más vivos y definidos.`,
+    precio_unitario: 85000,
+    precio_unitario_str: "85.000",
+    nombre:
+      "NOTEBOOK INTEL CELERON N3350 CON 4GB DE RAM NB142A-W10H DE 14,1 PULGADAS",
+    fecha_de_creacion: Date.now(),
+    stock: 5,
+    foto_url:
+      "https://www.megatone.net/Images/Articulos/zoom2x/200/NOT1464ENO.jpg",
+    permite_stock_negativo: false,
+    categoria: {
+      nombre: "Notebooks",
+      id: "notebooks",
+    },
+  },
+  {
+    id: 2,
+    descripción: `El celular Samsung Galaxy A33, en su color “Awesome Black” con acabado mate, brinda un estilo moderno y elegante que destaca del resto.`,
+    precio_unitario: 339000,
+    precio_unitario_str: "150.000",
+    nombre: "Sony PlayStation 5 825GB Digital Edition color blanco y negro",
+    fecha_de_creacion: Date.now(),
+    stock: 2,
+    foto_url:
+      "https://images.fravega.com/f300/00b618b11e945da02e5b927b1e9747a6.jpg.webp",
+    permite_stock_negativo: false,
+    categoria: {
+      nombre: "Celulares",
+      id: "celulares",
+    },
+  },
+  {
+    id: 3,
+    descripción: `Mediante sus entradas HDMI podés conectar reproductores de audio y video; consolas de juegos y notebooks. Su gran capacidad de transmisión de datos permite disfrutar de imágenes en alta definición y un sonido de gran fidelidad. `,
+    precio_unitario: 21699,
+    precio_unitario_str: "210.699",
+    nombre: "Teclado Mecánico Hyperx Alloy Origins Core - Aqua",
+    fecha_de_creacion: Date.now(),
+    stock: 2,
+    foto_url:
+      "https://images.fravega.com/f300/f0ef28b9dea1d9f1e07ce69215c29bdf.jpg.webp",
+    permite_stock_negativo: true,
+    categoria: {
+      nombre: "Televisores",
+      id: "televisores",
+    },
+  },
+];
+
 const local_storage_llaves = {
   PRODUCTOS: "productos",
   USUARIOS: "usuarios",
 };
-const productos_base1 = []
-fetch("./js/productos.json")
-  .then(response => response.json())
-  .then(data => {
-     productos_base1.push(data);
-  })
-  .catch(error => console.error(error))
-
-console.log(productos_base1)
 
 window.onload = function () {
   const productos = ObtenerLocalStorage(local_storage_llaves.PRODUCTOS);
 
   if (!productos) {
-    AgregarLocalStorage(local_storage_llaves.PRODUCTOS,) ;
+    AgregarLocalStorage(local_storage_llaves.PRODUCTOS, productos_base);
   }
 };
 
@@ -29,13 +73,12 @@ function ObtenerLocalStorage(key) {
 function AgregarLocalStorage(key, objeto) {
   localStorage.setItem(key, JSON.stringify(objeto));
 }
-//END CARGA DE DATOS
 
+//END carga Inicial de Datos - Semilla
 
-//REGION PINTAR PRODUCTOS
+//REGION PINTAR HTML
 
 const div_productos = document.querySelector("#lista");
-
 
 const productos = localStorage.getItem(local_storage_llaves.PRODUCTOS);
 
@@ -56,41 +99,35 @@ if (productos) {
 }
 
 function CreateCards(image, title, url, price) {
-  return `<div class="card mx-3 shadow">
-  <img src="${image}" class="card-img-top p-2 img-fluid rounded-start" alt="...">
-  <div class="card-body d-flex flex-column justify-content-between">
-    <h5 class="card-title text-center">${title}</h5>
-    <div class="d-flex justify-content-center">
-      <b class="text-center">$${price}</b>
+  return `<div class="card mx-3 shadow" style="width: 18rem;">
+    <img src="${image}" class="card-img-top p-2 img-fluid" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${title}</h5>
+      <span>
+      <b class="">$${price}</b>
+      <span>
+      <hr>
+      <a href="${url}" class="btn btn-dark white detalle">Detalle</a>
     </div>
-    <div class="d-flex justify-content-center align-items-center">
-      <a href="${url}" class="btn btn-dark white detalle me-2">Detalle</a>
-      <button class="btn btn-primary btn-cart d-none d-md-block" id ="carrito">
-        <i class="fas fa-shopping-cart"></i> 
-        <span class="cart-text">Agregar al carrito</span>
-      </button>
-    </div>
-    <div class="d-flex justify-content-center d-md-none">
-    <i class="fas fa-shopping-cart fa-2x"></i>
-  </div>
-  </div>
-</div>`;
+  </div>`;
 }
 
 function Url(id) {
   return `/productos_id.html?id=${id}`;
 }
 
-//END REGION PINTAR PRODUCTOS
+//END REGION PINTAR HTML
 
-//REGION BARRA DE BUSQUEDA
 
+//REGION BUSQUEDA
 
 document.getElementById("busqueda").addEventListener("change", (e) => {
   Buscar(e.target.value.toUpperCase());
 });
-function Buscar(value){
-  let productosFiltrados = JSON.parse(productos).filter(producto => producto.nombre.includes(value)); 
+function Buscar(value) {
+  let productosFiltrados = JSON.parse(productos).filter((producto) =>
+    producto.nombre.includes(value)
+  );
   if (productosFiltrados) {
     const lista = productosFiltrados;
     let htmlString = "";
@@ -106,12 +143,12 @@ function Buscar(value){
   } else {
     div_productos.innerHTML = "<h1>No hay productos.</h1>";
   }
-}; 
+}
 
-//END region barra de busqueda
 
-//REGION USUARIOS
+//END REGION BUSQUEDA
 
+//REGION CERRAR SESION
 const user = JSON.parse(localStorage.getItem('login_success')) || false
 if(!user){
     window.location.href = 'login.html'
@@ -125,16 +162,4 @@ logout.addEventListener('click', ()=>{
     window.location.href = 'login.html'
 })
 
-//END region usuarios
- 
-
-//REGION AGREGAR AL CARRITO
-const btnCarrito = document.getElementById("carrito")
-btnCarrito.addEventListener("click", (e) => {
-  return console.log(e.target)
-})
-
-
-
-
-//END REGION AGREGAR AL CARRITO
+//END REGION CERRAR

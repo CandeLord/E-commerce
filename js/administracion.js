@@ -7,6 +7,7 @@ const descripcion = document.getElementById("descripcion");
 const precio = document.getElementById("precio");
 const id = document.getElementById("id");
 const save = document.getElementById("save");
+const categoria = document.getElementById("categoria")
 //#endregion
 
 //#region  Variables
@@ -17,6 +18,7 @@ let vstock = 0;
 let vprecio = 0;
 let vstocknegativo = false;
 let vdescripcion = "";
+let vcategoria = "";
 //#endregion
 
 //#region Event Listeners
@@ -41,6 +43,41 @@ id.addEventListener("change", function (e) {
   vid = +e.target.value;
 });
 
+categoria.addEventListener("change", function (e) {
+  vcategoria = e.target.value;
+});
+
+save.addEventListener("click", function (e) {
+  e.preventDefault();
+  //verificar que todos los datos estén correctos
+  if (vdescripcion === "") {
+    alert("LLenar el campo de la descripción por favor");
+    return;
+  }
+  const producto = {
+    id: vid,
+    descripción: vdescripcion,
+    precio_unitario: vprecio,
+    precio_unitario_str: vprecio.toString(),
+    nombre: vnombre,
+    fecha_de_creacion: Date.now(),
+    stock: vstock,
+    foto_url: vfoto,
+    categoria: {
+      nombre : vcategoria,
+      id: vcategoria,
+      }
+  };
+
+  const productos = localStorage.getItem(productos_key);
+  const productosObjeto = JSON.parse(productos);
+  productosObjeto.push(producto);
+  localStorage.setItem(productos_key, JSON.stringify(productosObjeto));
+  location.reload()
+});
+//#endregion
+
+//region productos
 save.addEventListener("click", function (e) {
   e.preventDefault();
   //verificar que todos los datos estén correctos
@@ -72,10 +109,10 @@ const productos = JSON.parse(localStorage.getItem(productos_key));
 let htmlString = `<table class="table-light">
 <thead>
   <tr>
-    <th scope="col" class="w-20 text-center">#</th>
-    <th scope="col" class="w-50 text-center">Nombre</th>
-    <th scope="col" class="w-25 text-center">Precio Unitario</th>
-    <th scope="col" class="w-20 text-center">Stock</th>
+    <th scope="col" class="w-20 text-center text-light">#</th>
+    <th scope="col" class="w-50 text-center text-light">Nombre</th>
+    <th scope="col" class="w-25 text-center text-light">Precio Unitario</th>
+    <th scope="col" class="w-20 text-center text-light">Stock</th>
   </tr>
 </thead> 
 <tbody>`;
@@ -104,50 +141,56 @@ btnsEliminar.forEach((btn) => {
 function CreateItem(producto) {
   return `
       <tr>
-        <th scope="row" class="text-center">${producto.id}</th> 
-        <td class="text-center">${producto.nombre}</td>
-        <td class="text-center">${producto.precio_unitario_str}</td>
-        <td class="text-center">${producto.stock}</td>
-        <td><button class="btn btn-danger mx-5" id="btn-eliminar" name=${producto.id}>Eliminar</button></td>
+        <th scope="row" class="text-center text-light">${producto.id}</th> 
+        <td class="text-center text-light">${producto.nombre}</td>
+        <td class="text-center text-light">${producto.precio_unitario_str}</td>
+        <td class="text-center text-light">${producto.stock}</td>
+        <td><button class="btn btn-danger mx-5 text-light" id="btn-eliminar" name=${producto.id}>Eliminar</button></td>
       </tr>`;
 }
-//region usuarios
+//END region productos
+
+//REGION USUARIOS
+
 
 const tablaUsers = document.getElementById("tablaUsers")
 
-//const usuarios = JSON.parse(localStorage.getItem("usuario"))
-
-
-const usuarios = JSON.parse(localStorage.getItem("usuarios"))
+const usuarios = JSON.parse(localStorage.getItem("users"))
 
 let htmlStringUsers = `<table class="table-light">
 <thead>
   <tr>
-    <th scope="col" class="w-50">Nombre</th>
-    <th scope="col">contraseña</th>
+    <th scope="col" class="w-50 text-light">Nombre</th>
+    <th scope="col" class="w-50 text-light">email</th>
+    <th scope="col" class="w-50 text-light">contraseña</th>
   </tr>
 </thead> <tbody>`;
+
 usuarios.forEach((usuario) => {
   htmlStringUsers += CreateItemUsers(usuario);
 });
-htmlString += "</tbody></table>";
+htmlStringUsers += "</tbody></table>";
 tablaUsers.innerHTML = htmlStringUsers;
 
 function CreateItemUsers(usuario) {
   return `
       <tr>
-        <td>${usuario.nombre}</td>
-        <td>${usuario.password}</td>
-        <td><button class="btn btn-danger" id="btn-eliminarUsuario" name=${usuario.nombre}>Eliminar</button></td>
-      </tr>`;
+        <td class="w-50 text-light">${usuario.name}</td>
+        <td class="w-50 text-light">${usuario.email}</td>
+        <td class="w-50 text-light">${usuario.password}</td>
+        <td class="w-50 text-light"><button class="btn btn-danger" id="btn-eliminarUsuario" name="${usuario.name}">Eliminar</button></td>
+      </tr>
+      `;
 }
 
-
-const btnsEliminarUsuarios = document.getElementById("btn-eliminarUsuario");
-
-btnsEliminarUsuarios.addEventListener("click", (e) => {
-  const nuevaLista = usuarios.filter((usuario) => usuario.nombre != e.target.name
+const btnsEliminarUsuario = document.querySelectorAll("#btn-eliminarUsuario");
+btnsEliminarUsuario.forEach((btn) => {
+  btn.addEventListener("click", (e) => {
+  const nuevaLista = usuarios.filter((usuario) => usuario.name != e.target.name
   );
-  localStorage.setItem("usuarios", JSON.stringify(nuevaLista))
+  localStorage.setItem("users", JSON.stringify(nuevaLista))
   location.reload()
-})
+})})
+
+
+//END REGION USUARIOS

@@ -1,13 +1,17 @@
+body {
+  background-color: #41968a;
+}
+
 #tabla {
-  background-color: white !important;
   width: 100%;
   padding: 5px;
+  color: white;
 
 }
 #tablaUsers {
-  background-color: white !important;
-  width: 70%;
+  width: 100%;
   padding: 5px;
+  color: white;
 }
 
 
@@ -31,7 +35,6 @@
 }
   
 .formulario {
-  background-color: white;
   border-radius: 1%;
   margin-top: 5px;
   padding: 50px;

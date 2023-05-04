@@ -24,7 +24,7 @@
             <a class="nav-link" href="/index.html">Inicio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Productos</a>
+            <a class="nav-link" href="/productos.html">Productos</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/favoritos.html">Favoritos</a>
@@ -33,61 +33,24 @@
             <a class="nav-link" href="/administracion.html">administracion</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Carrito</a>
+            <a class="nav-link" href="/carrito.html">Carrito</a>
           </li>
           <li class="nav-item">
             <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar" id="busqueda">
             </form>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Iniciar sesión</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Registrarse</a>
+          <li>
+            <button id="logout" class="btn btn-danger">Logout</button>
           </li>
         </ul>
       </div>
     </div>
   </nav>
-  <!-- Modal-->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">
-            Iniciar Sesión
-          </h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="mb-3">
-              <label for="mail" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp" />
-              <div id="emailHelp" class="form-text">
-                Nunca compartiremos tu contraseña con nadie
-              </div>
-            </div>
-            <div class="mb-3">
-              <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" id="password" />
-            </div>
-          </form>
-          
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" id="close">
-            Close
-          </button>
-          <button type="button" class="btn btn-dark" data-bs-dismiss="modal" id="login">Login</button>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <!-- -->
   <div class="d-flex flex-row flex-wrap">
-    <div class="formulario m-2 shadow">
+    <div class="formulario m-2 shadow bg-dark text-light">
       <form>
         <div class="mb-3">
           <label for="nombre" class="form-label">Nombre</label>
@@ -115,6 +78,15 @@
             <input type="number" class="form-control" id="id" />
           </div>
         <div class="mb-3">
+        <div class="mb-3">
+          <label for="nombre" class="form-label">categoria</label>
+          <input
+            type="text"
+            class="form-control"
+            id="categoria"
+            aria-describedby="emailHelp"
+          />
+        </div>   
           <label for="descripcion">Descripción del producto</label>
           <textarea
             class="form-control"
@@ -128,12 +100,12 @@
     </div>
 
     <div class="tabla-parentUsers">
-      <div id="tablaUsers" class="shadow">
+      <div id="tablaUsers" class="shadow bg-dark">
   
       </div>
     </div>
     <div class="tabla-parentProducts">
-      <div id="tabla" class="shadow">
+      <div id="tabla" class="shadow bg-dark">
   
       </div>
     </div>

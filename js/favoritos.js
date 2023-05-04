@@ -20,26 +20,29 @@ if (productos_favoritos) {
   }
   
   function createC(image, title, url, price, id) {
-    return `<div class="card mx-3 shadow" style="width: 18rem;">
-      <img src="${image}" class="card-img-top p-2" alt="...">
-      <div class="card-body">
-        <h5 class="card-title">${title}</h5>
-        <span><b>$${price}</b><span>
-        <hr>
+    return `<div class="card mx-3" style="width: 18rem;">
+    <img src="${image}" class="card-img-top p-2" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${title}</h5>
+      <span class="card-price"><b>$${price}</b></span>
+      <hr>
+      <div class="card-buttons">
         <a href="${url}" class="btn btn-primary white detalle">Ir al producto</a>
-        <button class="btn btn-danger my-2" id="btn-eliminar" name=${id}>Eliminar</button>
+        <button class="btn btn-danger my-2" id="btn-eliminarFav" name=${id}>Eliminar</button>
       </div>
-    </div>`;
+    </div>
+  </div>`;
   }
   
   function Url(id) {
     return `/productos_id.html?id=${id}`;
   }
   
-const btnsEliminar = document.getElementById("btn-eliminar");
+const btnsEliminarFav = document.querySelectorAll("#btn-eliminarFav");
 
-btnsEliminar.addEventListener("click", function (e) {;
+btnsEliminarFav.forEach((btn) => {
+  btn.addEventListener("click", function (e) {;
     const nuevaLista = productos_favoritos.filter((producto) => producto.id != e.target.name);
     localStorage.setItem("productos favoritos", JSON.stringify(nuevaLista));
     location.reload()
-});
+})});
