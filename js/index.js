@@ -23,7 +23,7 @@ const productos_base = [
     descripción: `El celular Samsung Galaxy A33, en su color “Awesome Black” con acabado mate, brinda un estilo moderno y elegante que destaca del resto.`,
     precio_unitario: 339000,
     precio_unitario_str: "150.000",
-    nombre: "Sony PlayStation 5 825GB Digital Edition color blanco y negro",
+    nombre: "Celular liberado Samsung Galaxy A33",
     fecha_de_creacion: Date.now(),
     stock: 2,
     foto_url:
@@ -39,7 +39,7 @@ const productos_base = [
     descripción: `Mediante sus entradas HDMI podés conectar reproductores de audio y video; consolas de juegos y notebooks. Su gran capacidad de transmisión de datos permite disfrutar de imágenes en alta definición y un sonido de gran fidelidad. `,
     precio_unitario: 21699,
     precio_unitario_str: "210.699",
-    nombre: "Teclado Mecánico Hyperx Alloy Origins Core - Aqua",
+    nombre: "Televisor Smart 50 pulgadas",
     fecha_de_creacion: Date.now(),
     stock: 2,
     foto_url:
@@ -99,7 +99,7 @@ if (productos) {
 }
 
 function CreateCards(image, title, url, price) {
-  return `<div class="card mx-3 shadow" style="width: 18rem;">
+  return `<div class="card mx-3 shadow col-12-sm my-3" style="width: 18rem;">
     <img src="${image}" class="card-img-top p-2 img-fluid" alt="...">
     <div class="card-body">
       <h5 class="card-title">${title}</h5>
@@ -148,18 +148,17 @@ function Buscar(value) {
 
 //END REGION BUSQUEDA
 
-//REGION CERRAR SESION
-const user = JSON.parse(localStorage.getItem('login_success')) || false
-if(!user){
-    window.location.href = 'login.html'
-}
 
-const logout = document.querySelector('#logout')
+//REGION ADMINISTRADOR
 
-logout.addEventListener('click', ()=>{
-    alert('¡Hasta pronto!')
-    localStorage.removeItem('login_success')
-    window.location.href = 'login.html'
-})
+const usuario = JSON.parse(localStorage.getItem("login_success"))
+const  admin = document.getElementById ("administracion")
+console.log(admin)
+console.log(usuario)
+if (usuario.name == "admin" && usuario.password == "admin") {
+  admin.classList.remove("administracionLink")
+} 
 
-//END REGION CERRAR
+
+
+//END REGION ADMINISTRADOR

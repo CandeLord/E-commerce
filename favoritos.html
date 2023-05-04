@@ -9,13 +9,14 @@
     integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
   <link rel="stylesheet" type="text/css" href="/css/index.css" />
   <link rel="stylesheet" type="text/css" href="/css/favoritos.css" />
-  <title>Rolling Code 33i</title>
+  <link rel="stylesheet" href="/css/error.css">
+  <title>Mi TiendaElectronica</title>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
-      <a class="navbar-brand" href="/index.html">Mi Tienda</a>
+      <a class="navbar-brand" href="/index.html">Mi TiendaElectronica</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -31,7 +32,7 @@
             <a class="nav-link" href="/favoritos.html">Favoritos</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/administracion.html">administracion</a>
+            <a class="nav-link administracionLink" href="/administracion.html" id="administracion">administracion</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/carrito.html">Carrito</a>
@@ -50,9 +51,8 @@
   </nav>
 
   <!-- -->
-  <h1 class="text-center shadow">Productos Favoritos</h1>
-  <div class="container-fluid">
-    <div id="listaFavoritos" class="d-flex flex-row flex-wrap bg-white shadow">Productos Favoritos</div>
+  <div class="container-fluid my-4">
+    <div id="listaFavoritos" class="d-flex flex-row flex-wrap bg-white shadow p-3"></div>
   </div>
 
 
@@ -76,6 +76,8 @@
             <li><a href="/productos.html" class="nav-linkF" >Productos</a></li>
             <li><a href="/favoritos.html" class="nav-linkF" >Favoritos</a></li>
             <li><a href="/carrito.html" class="nav-linkF" >Carrito</a></li>
+            <li><a href="/nosotros.html" class="nav-linkF" >Nosotros</a></li>
+
           </ul>
         </div>
         <div class="col-md-4 mb-3 mb-md-0">
@@ -99,6 +101,7 @@
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
   integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
-<script src="/js/login.js"></script>
 <script src="/js/favoritos.js"></script>
+<script src="/js/logOut.js"></script>
+
 </html>

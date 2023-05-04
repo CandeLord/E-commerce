@@ -2,8 +2,7 @@ const listaFavoritos = document.getElementById("listaFavoritos")
 
 const productos_favoritos = JSON.parse(localStorage.getItem("productos favoritos"))
 
-
-if (productos_favoritos) {
+if (productos_favoritos.length > 0) {
     let htmlString = "";
     productos_favoritos.forEach((producto) => {
       htmlString += createC(
@@ -16,7 +15,11 @@ if (productos_favoritos) {
     });
     listaFavoritos.innerHTML = htmlString;
   } else {
-    listaFavoritos.innerHTML = "<h1>NO HAY PRODUCTOS  </h1>";
+    listaFavoritos.innerHTML =`<div class="error-container">
+    <h1>404</h1>
+    <p>Oops! La página que buscas no se encuentra disponible.</p>
+    <a href="/index.html" class="btn btn-lg">Volver al inicio</a>
+  </div>`
   }
   
   function createC(image, title, url, price, id) {
@@ -46,3 +49,18 @@ btnsEliminarFav.forEach((btn) => {
     localStorage.setItem("productos favoritos", JSON.stringify(nuevaLista));
     location.reload()
 })});
+
+
+//REGION ADMINISTRADOR
+
+const usuario = JSON.parse(localStorage.getItem("login_success"))
+const  admin = document.getElementById ("administracion")
+console.log(admin)
+console.log(usuario)
+if (usuario.name == "admin" && usuario.password == "admin") {
+  admin.classList.remove("administracionLink")
+} 
+
+
+
+//END REGION ADMINISTRADOR

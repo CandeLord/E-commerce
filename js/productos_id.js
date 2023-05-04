@@ -91,3 +91,10 @@ like.addEventListener("click", () => {
   }
 })
 
+//REGION ADMINISTRADOR
+
+
+
+
+
+//END REGION ADMINISTRADOR

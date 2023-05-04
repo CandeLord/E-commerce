@@ -131,3 +131,17 @@ function actualizarNumerito() {
   );
   numerito.innerText = nuevoNumerito;
 }
+
+//REGION ADMINISTRADOR
+
+const usuario = JSON.parse(localStorage.getItem("login_success"))
+const  admin = document.getElementById ("administracion")
+console.log(admin)
+console.log(usuario)
+if (usuario.name == "admin" && usuario.password == "admin") {
+  admin.classList.remove("administracionLink")
+} 
+
+
+
+//END REGION ADMINISTRADOR

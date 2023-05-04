@@ -37,11 +37,11 @@ function cargarProductosCarrito() {
                 </div>
                 <div class="carrito-producto-precio">
                     <small>Precio</small>
-                    <p>$${producto.precio_unitario_str}</p>
+                    <p>$${producto.precio_unitario}</p>
                 </div>
                 <div class="carrito-producto-subtotal">
                     <small>Subtotal</small>
-                    <p>$${producto.precio_unitario_str * producto.cantidad}</p>
+                    <p>$${producto.precio_unitario * producto.cantidad}</p>
                 </div>
                 <button class="carrito-producto-eliminar" id="${producto.id}"><i class="bi bi-trash-fill"></i></button>
             `;
@@ -140,3 +140,17 @@ function comprarCarrito() {
     contenedorCarritoComprado.classList.remove("disabled");
 
 }
+
+//REGION ADMINISTRADOR
+
+const usuario = JSON.parse(localStorage.getItem("login_success"))
+const  admin = document.getElementById ("administracion")
+console.log(admin)
+console.log(usuario)
+if (usuario.name == "admin" && usuario.password == "admin") {
+  admin.classList.remove("administracionLink")
+} 
+
+
+
+//END REGION ADMINISTRADOR

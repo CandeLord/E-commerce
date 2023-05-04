@@ -1,7 +1,10 @@
 body {
     background-color: #41968a;
 }
-  
+
+.administracionLink {
+    display: none;
+}
 
 .navbar-brand {
     font-size: 1.5rem;
