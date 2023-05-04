@@ -1,54 +1,16 @@
-const MENSAJES = {
-    error: "Las contraseñas deben coincidir",
-}
-const DB = {
-    usuario: "usuario"
-}
-//#region LOGIN
-const submit = document.getElementById("submit");
-const inputMail = document.getElementById("inputmail");
-const inputPassword = document.getElementById("inputpass");
-//#endregion LOGIN
-let mail = "";
-let password ="";
-
-//#region SUBMIT
-submit.addEventListener("click", function(e){;
-    const usuarioLocalStorage = JSON.parse(localStorage.getItem(DB.usuario));   
-    if (usuarioLocalStorage.nombre !== mail || usuarioLocalStorage.password !== password ){
-        alert ("Error en las credenciales");
-    }else {
-        alert ("Bienvenido " + mail);
+const loginForm = document.querySelector('#loginForm')
+loginForm.addEventListener('submit', (e)=>{
+    e.preventDefault()
+    const email = document.querySelector('#email').value
+    const password = document.querySelector('#password').value
+    const Users = JSON.parse(localStorage.getItem('users')) || []
+    const validUser = Users.find(user => user.email === email && user.password === password)
+    if(!validUser){
+        return alert('Usuario y/o contraseña incorrectos!')
     }
-});
-inputMail.addEventListener("change", function(e){
-    
-    mail = e.target.value;
-});
-inputPassword.addEventListener("change", function(e){
-   password = e.target.value;
+    alert(`Bienvenido ${validUser.name}`)
+    localStorage.setItem('login_success', JSON.stringify(validUser))
+    window.location.href = './index.html'   
+
 })
-
-//#endregion SUBMIT
-
-const usuarios = [
-    {
-      nombre : "Facundo",
-      password : "jsfkdjfl", 
-    },
-    {
-      nombre : "Pierina",
-      password : "fsdfsdfsd", 
-    },
-    {
-      nombre : "Cande",
-      password : "fsdfsdfsd", 
-    },
-    {
-      nombre : "Pablo",
-      password : "fsdfsdfsd", 
-    },
-  ]
-  
-  localStorage.setItem("usuarios", JSON.stringify(usuarios))
 
