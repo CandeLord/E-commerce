@@ -47,40 +47,11 @@ categoria.addEventListener("change", function (e) {
   vcategoria = e.target.value;
 });
 
-save.addEventListener("click", function (e) {
-  e.preventDefault();
-  //verificar que todos los datos estén correctos
-  if (vdescripcion === "") {
-    alert("LLenar el campo de la descripción por favor");
-    return;
-  }
-  const producto = {
-    id: vid,
-    descripción: vdescripcion,
-    precio_unitario: vprecio,
-    precio_unitario_str: vprecio.toString(),
-    nombre: vnombre,
-    fecha_de_creacion: Date.now(),
-    stock: vstock,
-    foto_url: vfoto,
-    categoria: {
-      nombre : vcategoria,
-      id: vcategoria,
-      }
-  };
 
-  const productos = localStorage.getItem(productos_key);
-  const productosObjeto = JSON.parse(productos);
-  productosObjeto.push(producto);
-  localStorage.setItem(productos_key, JSON.stringify(productosObjeto));
-  location.reload()
-});
-//#endregion
 
 //region productos
 save.addEventListener("click", function (e) {
   e.preventDefault();
-  //verificar que todos los datos estén correctos
   if (vdescripcion === "") {
     alert("LLenar el campo de la descripción por favor");
     return;
@@ -94,6 +65,11 @@ save.addEventListener("click", function (e) {
     fecha_de_creacion: Date.now(),
     stock: vstock,
     foto_url: vfoto,
+    categorias : {
+      nombre : vcategoria,
+      id: vcategoria,
+    }
+
   };
 
   const productos = localStorage.getItem(productos_key);
@@ -102,6 +78,7 @@ save.addEventListener("click", function (e) {
   localStorage.setItem(productos_key, JSON.stringify(productosObjeto));
   location.reload()
 });
+
 //#endregion
 const productos_key = "productos";
 const productos = JSON.parse(localStorage.getItem(productos_key));

@@ -11,10 +11,6 @@ const local_storage_llaves = {
 
 const objeto = JSON.parse(localStorage.getItem(local_storage_llaves.PRODUCTOS));
 
-if (!objeto) {
-  //;
-
-}
 
 let elementoFiltrado = objeto.filter(
   (producto) => producto.id === parseInt(paramId)
@@ -72,7 +68,7 @@ like?.addEventListener("click", () => {
 like.addEventListener("click", () => {
 
   if (likeClicked) {
-    let array = JSON.parse(localStorage.getItem("productos favoritos"));
+    let array = JSON.parse(localStorage.getItem("productos favoritos")) || [];
     let id = parseInt(new URLSearchParams(window.location.search).get("id"));  
     let objetoFavorito = objeto.find((objeto) =>{
     return objeto.id == id})
@@ -91,10 +87,9 @@ like.addEventListener("click", () => {
   }
 })
 
-//REGION ADMINISTRADOR
 
 
 
 
 
-//END REGION ADMINISTRADOR
+

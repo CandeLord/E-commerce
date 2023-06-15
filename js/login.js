@@ -14,7 +14,6 @@ loginForm.addEventListener('submit', (e)=>{
 
 })
 
-//cerrar sesion
 
 
 

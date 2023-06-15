@@ -52,6 +52,8 @@ const productos_base = [
   },
 ];
 
+
+
 const local_storage_llaves = {
   PRODUCTOS: "productos",
   USUARIOS: "usuarios",
@@ -73,6 +75,7 @@ function ObtenerLocalStorage(key) {
 function AgregarLocalStorage(key, objeto) {
   localStorage.setItem(key, JSON.stringify(objeto));
 }
+
 
 //END carga Inicial de Datos - Semilla
 
@@ -122,7 +125,7 @@ function Url(id) {
 //REGION BUSQUEDA
 
 document.getElementById("busqueda").addEventListener("change", (e) => {
-  Buscar(e.target.value.toUpperCase());
+  Buscar(e.target.value);
 });
 function Buscar(value) {
   let productosFiltrados = JSON.parse(productos).filter((producto) =>
@@ -141,7 +144,7 @@ function Buscar(value) {
     });
     div_productos.innerHTML = htmlString;
   } else {
-    div_productos.innerHTML = "<h1>No hay productos.</h1>";
+    div_productos.innerHTML = "<h1>No se encontraron productos.</h1>";
   }
 }
 
